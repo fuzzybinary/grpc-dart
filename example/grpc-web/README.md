@@ -13,11 +13,14 @@ $ pub global activate webdev
 ```
 
 # Run the sample code
-Follow the instructions for starting the grpc-web example server. The simplest version of this involves running the grpc-web server in a docker container with:
+To run this example you'll need a running GRPC server which implements the echo service. There's a basic implementation
+available in `lib/src/server.dart`. To run this server including an envoy proxy to properly support grpc web:
 
 ```sh
-$ docker-compose up echo-server envoy
+$ docker-compose up -d
 ```
+
+This will launch a envoy server on http://localhost:8080 which will proxy to a dart service container. 
 
 To compile and run the example, assuming you are in the root of the grpc-web
 folder, i.e., .../example/grpc-web/, first get the dependencies by running:
